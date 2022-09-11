@@ -10,7 +10,7 @@ const Users = (props) => {
     return <div>
         Users:
         <p>{JSON.stringify(props.userDetail, null, 2)}</p>
-        <input value={props.userDetail.name} onChange={updateName} />
+        <input value={props?.userDetail?.name} onChange={updateName} />
     </div>
 }
 
