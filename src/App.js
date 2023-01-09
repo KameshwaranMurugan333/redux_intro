@@ -1,16 +1,17 @@
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { counterReducers } from './reducers';
-import { Counter, Divider, Users } from './screens';
+import CounterV2 from './screens/counterv2';
 
 let store = createStore(counterReducers);
 
 function App() {
   return (
     <Provider store={store} >
-        <Counter />
+        <CounterV2 />
+        {/* <Counter />
         <Divider />
-        <Users />
+        <Users /> */}
     </Provider>
   );
 }
