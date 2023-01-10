@@ -23,6 +23,7 @@ const CounterV2 = (props) => {
         <button onClick={increment}>Increment</button>
         <button onClick={decrement} >Decrement</button>
         <button onClick={multiply} >Multiply</button>
+        <p>{JSON.stringify(todos)}</p>
     </div>
 }
 
