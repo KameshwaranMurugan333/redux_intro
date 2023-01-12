@@ -1,7 +1,8 @@
 import React from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-export const AddTodoV2 = () => {
+export const EditTodoV2 = () => {
 
     const dispatch = useDispatch();
     const todos = useSelector(store => store.todos);
@@ -10,9 +11,13 @@ export const AddTodoV2 = () => {
     const email = useSelector(store => store.email);
     const commt = useSelector(store => store.commt);
 
-    const addTodo = () => {
-        dispatch({ type: "add_todo", todo: { title, email, commt, id: 1 } });
+    const editTodo = () => {
+        dispatch({ type: "updateTodo", id: 1, todo: { title, email, commt } });
     }
+
+    useEffect(() => {
+        dispatch({ type: "getTodoById", id: 1})
+    },[])
 
     return <div>
         {/* Add Todo */}
@@ -20,7 +25,7 @@ export const AddTodoV2 = () => {
         <input value={email} type={"text"} placeholder={"Todo Email"} onChange={(e) => dispatch({ type: "update_email", email: e.target.value })} />
         <input value={commt} type={"text"} placeholder={"Todo Comment"} onChange={(e) => dispatch({ type: "update_commt", commt: e.target.value })} />
 
-        <button onClick={addTodo}>Add Todo</button>
+        <button onClick={editTodo}>Update Todo</button>
 
         {/* Listing Todo */}
         <h6>All Todos</h6>

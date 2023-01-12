@@ -32,6 +32,18 @@ export const counterReducers = (
             let todoV2 = { title: state.title, email: state.email, commt: state.commt };
             return { ...state, todos: [...state.todos, todoV2], title: "", email: "", commt: "" }
 
+        case 'getTodoById':
+            let todoForEdit = state.todos.filter(todo => todo.id === action.id)
+            return { ...state, title: todoForEdit.title, email: todoForEdit.email, commt: todoForEdit.commt }
+
+        case 'updateTodo':
+            let newTodos = state.todos.map(todo => {
+                if (todo.id === action.id) {
+                    return { id: todo.id, ...action.todo }
+                }
+                return todo
+            });
+            return { ...state, todos: newTodos }
         default:
             return state;
     }
