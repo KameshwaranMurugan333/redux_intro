@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { createStore } from 'redux';
+import { counterReducer } from './reducers/counterReducer';
+import { Provider } from 'react-redux';
+import { Counter } from './screens/counter';
+import { CounterNature } from './screens/counterNature';
+import { EmailForm } from './screens/emailForm';
+
+const store = createStore(counterReducer);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Counter />
+      <CounterNature />
+      <EmailForm />
+    </Provider>
   );
 }
 
